@@ -23,9 +23,10 @@ server {
     	listen [::]:80 default_server;
     	index index.html index.htm index.nginx-debian.html;
 
-        server_name [*CHANGEME WITH THIS IP MACHINE*];
-	return 302 https://$server_name$request_uri;
+        server_name [*CHANGE ME WITH THIS IP MACHINE*];
+
 	
+    	return 302 https://$server_name$request_uri;
 }
 server {
 
@@ -49,12 +50,15 @@ server {
      			return 404;
     		}
 
-    		proxy_pass                          http://localhost:5000;
-    		proxy_set_header  Host              $http_host;   # required for docker client's sake
-    		proxy_set_header  X-Real-IP         $remote_addr; # pass on real client's IP
-    		proxy_set_header  X-Forwarded-For   $proxy_add_x_forwarded_for;
-    		proxy_set_header  X-Forwarded-Proto $scheme;
-    		proxy_read_timeout                  900;
+   		 proxy_pass                          http://localhost:5000;
+   		 proxy_set_header  Host              $http_host;   # required for docker client's sake
+   		 proxy_set_header  X-Real-IP         $remote_addr; # pass on real client's IP
+  		 proxy_set_header  X-Forwarded-For   $proxy_add_x_forwarded_for;
+   		 proxy_set_header  X-Forwarded-Proto $scheme;
+   		 proxy_read_timeout                  900;
 	}
 
+	
 }
+
+
